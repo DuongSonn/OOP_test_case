@@ -15,7 +15,6 @@ import config.Constant;
 import models.*;
 
 public class GetPost {
-
 	public static void main(String[] args) throws MalformedURLException, ProtocolException, 
 	IOException {
 	    URL url = new URL(Constant.API_URL + "post/get_post"
