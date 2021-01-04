@@ -108,14 +108,14 @@ public class main {
 		
 		JLabel lblSource = new JLabel("Select Source");
 		
-		JComboBox comboSource = new JComboBox();
+		final JComboBox comboSource = new JComboBox();
 		for (int i = 0; i < Constant.SOURCES.length; i++) {
 			comboSource.addItem(Constant.SOURCES[i]);
 		}
 		
 		JLabel lblAPI = new JLabel("Select API");
 		
-		JComboBox comboApi = new JComboBox();
+		final JComboBox comboApi = new JComboBox();
 		comboSource.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
             	comboApi.removeAllItems();
@@ -136,7 +136,7 @@ public class main {
             			comboApi.addItem(Constant.APIS_SOURCE_3[i]);
           		  	}
           		  	break;
-            	  case "https://hust-fb-it4895.herokuapp.com/":
+            	  case "https://hust-fb-it4895.herokuapp.com/it4788/":
             		for (int i = 0; i < Constant.APIS_SOURCE_4.length; i++) {
             			comboApi.addItem(Constant.APIS_SOURCE_4[i]);
           		  	}
@@ -187,11 +187,11 @@ public class main {
 		formPanel.setLayout(gl_formPanel);
 		labelPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblGroup = new JLabel("Group 2 API Test Case");
+		JLabel lblGroup = new JLabel("Group 3 API Test Case");
 		lblGroup.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPanel.add(lblGroup);
 		
-		WiderDropDownCombo  comboTestCase = new WiderDropDownCombo();
+		final WiderDropDownCombo  comboTestCase = new WiderDropDownCombo();
 		comboApi.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
             	comboTestCase.removeAllItems();
@@ -208,7 +208,14 @@ public class main {
 	      		  	}
 	          		comboTestCase.setSelectedItem(Constant.TEST_CASES_GET_POST[0]);
 	          		comboTestCase.setWide(true);
-            	} else {
+            	} else if (testCase.contains("edit_post")) {
+            		for (int i = 0; i < Constant.TEST_CASES_EDIT_POST.length; i++) {
+	          			comboTestCase.addItem(Constant.TEST_CASES_EDIT_POST[i]);
+	      		  	}
+	          		comboTestCase.setSelectedItem(Constant.TEST_CASES_EDIT_POST[0]);
+	          		comboTestCase.setWide(true);
+            	} 
+            	else {
             		
             	}
             }
@@ -216,55 +223,59 @@ public class main {
 		
 		JLabel lblResult = new JLabel("Result");
 		
-		JTextArea textResult = new JTextArea();
+		final JTextArea textResult = new JTextArea();
+		textResult.setLineWrap(true);
 		textResult.setEnabled(false);
 		
 		JLabel lblResponse = new JLabel("Response");
-		
-		JTextArea textResponse = new JTextArea();
-		textResponse.setEnabled(false);
-		JScrollPane scroll = new JScrollPane(textResponse);
+		JScrollPane scroll = new JScrollPane();
 		scroll.setEnabled(false);
 		GroupLayout gl_testCasePanel = new GroupLayout(testCasePanel);
 		gl_testCasePanel.setHorizontalGroup(
-			gl_testCasePanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_testCasePanel.createSequentialGroup()
-					.addGroup(gl_testCasePanel.createParallelGroup(Alignment.TRAILING)
+			gl_testCasePanel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_testCasePanel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_testCasePanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_testCasePanel.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(gl_testCasePanel.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_testCasePanel.createSequentialGroup()
-									.addComponent(lblTestCase, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblResponse, GroupLayout.PREFERRED_SIZE, 283, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_testCasePanel.createSequentialGroup()
-									.addComponent(comboTestCase, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(scroll, GroupLayout.PREFERRED_SIZE, 283, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(Alignment.LEADING, gl_testCasePanel.createSequentialGroup()
-							.addGap(293)
-							.addGroup(gl_testCasePanel.createParallelGroup(Alignment.LEADING)
-								.addComponent(textResult, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-								.addComponent(lblResult, GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))))
-					.addContainerGap())
+							.addComponent(textResult, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+							.addContainerGap())
+						.addGroup(gl_testCasePanel.createSequentialGroup()
+							.addComponent(lblTestCase, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(297, Short.MAX_VALUE))
+						.addGroup(gl_testCasePanel.createSequentialGroup()
+							.addComponent(lblResponse, GroupLayout.PREFERRED_SIZE, 283, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(291, Short.MAX_VALUE))
+						.addGroup(gl_testCasePanel.createSequentialGroup()
+							.addComponent(lblResult, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGap(510))
+						.addGroup(Alignment.TRAILING, gl_testCasePanel.createSequentialGroup()
+							.addGroup(gl_testCasePanel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(comboTestCase, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+								.addComponent(scroll, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
+							.addContainerGap())))
 		);
 		gl_testCasePanel.setVerticalGroup(
 			gl_testCasePanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_testCasePanel.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_testCasePanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblTestCase)
-						.addComponent(lblResponse))
+					.addComponent(lblTestCase)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_testCasePanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(comboTestCase, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(scroll, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-					.addGap(21)
+					.addComponent(comboTestCase, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblResponse)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scroll, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
 					.addComponent(lblResult)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textResult, GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(textResult, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
 					.addContainerGap())
 		);
+		
+		final JTextArea textResponse = new JTextArea();
+		scroll.setViewportView(textResponse);
+		textResponse.setLineWrap(true);
+		textResponse.setEnabled(false);
 		testCasePanel.setLayout(gl_testCasePanel);
 		
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -291,7 +302,17 @@ public class main {
             				break;
             			}
             		}
-            	} else {
+            	} else if (testCase.contains("edit_post")) {
+            		String testNumber = String.valueOf(comboTestCase.getSelectedItem());
+            		for (int i = 0; i < Constant.TEST_CASES_EDIT_POST.length; i++) {
+            			if (testNumber == Constant.TEST_CASES_EDIT_POST[i]) {
+            				int testCaseNum = i + 1;
+            				EditPost.run(testCaseNum, textResult, textResponse);
+            				break;
+            			}
+            		}
+            	} 
+            	else {
             		
             	}
 			}
