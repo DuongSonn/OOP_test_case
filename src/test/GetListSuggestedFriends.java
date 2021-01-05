@@ -17,18 +17,18 @@ import com.google.gson.JsonObject;
 import config.Constant;
 import models.*;
 
-public class GetComment {
+public class GetListSuggestedFriends {
 	public static void run(String sourceName, int testCaseNum, JTextArea textResult, JTextArea textResponse) {
 		try {
-			URL url = new URL(sourceName + "get_comment"
+			URL url = new URL(sourceName + "get_list_suggested_friends"
 					+ "?token=" + Constant.TOKEN 
-					+ "&id=" + Constant.POST_ID_SOURCE_4
-					+ "&index=0"
-					+ "&count=20");
+					+ "&index=0"  
+					+ "&count=20"
+					);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
 			connection.setDoOutput(true);
-		    try (DataOutputStream writer = new DataOutputStream(connection.getOutputStream())) {
+			try (DataOutputStream writer = new DataOutputStream(connection.getOutputStream())) {
 		        
 		        StringBuilder content;
 
@@ -44,37 +44,38 @@ public class GetComment {
 		        textResponse.setText(content.toString());
 		        
 		        Gson  g = new Gson();
-		        ResponseComment rp = g.fromJson(content.toString(), ResponseComment.class);
+		        ResponseListFriend rp = g.fromJson(content.toString(), ResponseListFriend.class);
 		        if (testCaseNum == 1) {
-			        assert(rp.code != null && !"".equals(rp.code));
+		        	assert(rp.code != null && !"".equals(rp.code));
 			        assert(rp.message != null && !"".equals(rp.message));
 			        if (rp.code.equals(Constant.OK)) {
 			        	assert(rp.data != null);
 			        }
 			        textResult.setText("Test case 1 is finished! Satisfied!");
-		        } else if (testCaseNum == 2) {
-		        	for (int i = 0; i < rp.data.length; i++) {
-			        	assert(rp.data[i].id != null && !"".equals(rp.data[i].id));
-			        	assert(rp.data[i].comment != null && !"".equals(rp.data[i].comment));
-			        	assert(rp.data[i].created != null && !"".equals(rp.data[i].created));
-			        	assert(rp.data[i].poster != null);
-			        	assert(rp.data[i].is_blocked != null && !"".equals(rp.data[i].is_blocked));
-		        	}
+				} else if (testCaseNum == 2) {
+					assert(rp.data.list_users!= null);
+					if (rp.data.list_users.length > 0) {
+						for (int i = 0; i < rp.data.list_users.length; i++) {
+							assert(rp.data.list_users[i].user_id != null && !"".equals(rp.data.list_users[i].user_id));
+							assert(rp.data.list_users[i].username != null && !"".equals(rp.data.list_users[i].username));
+							assert(rp.data.list_users[i].avatar != null && !"".equals(rp.data.list_users[i].avatar));
+							assert(rp.data.list_users[i].same_friends != null && !"".equals(rp.data.list_users[i].same_friends));
+						}
+					}
 		        	textResult.setText("Test case 2 is finished! Satisfied!");
 		        } else if (testCaseNum == 3) {
-		        	for (int i = 0; i < rp.data.length; i++) {
-				        assert(!rp.data[i].is_blocked.equals(Constant.IS_BLOCKED));
-		        	}
+					assert(rp.data.list_users!= null);
+					if (rp.data.list_users.length > 0) {
+						for (int i = 0; i < rp.data.list_users.length; i++) {
+							for (int j = i + 1; j < rp.data.list_users.length; j++) {
+								assert(rp.data.list_users[i].user_id != rp.data.list_users[j].user_id);
+							}
+						}
+					}
 		        	textResult.setText("Test case 3 is finished! Satisfied!");
-		        } else if (testCaseNum == 4) {
-		        	for (int i = 0; i < rp.data.length; i++) {
-				        assert(rp.data[i].poster.id != null && !"".equals(rp.data[i].poster.id));
-				        assert(rp.data[i].poster.name != null && !"".equals(rp.data[i].poster.name));
-				        assert(rp.data[i].poster.avatar != null && !"".equals(rp.data[i].poster.avatar));
-		        	}
-		        	textResult.setText("Test case 4 is finished! Satisfied!");
-		        }
+		        }	    
 		    } catch (IOException e) {
+		    	textResult.setText("Test case failed!");
 				e.printStackTrace();
 			} finally {
 		        connection.disconnect();

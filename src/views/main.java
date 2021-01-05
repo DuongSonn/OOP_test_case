@@ -214,6 +214,18 @@ public class main {
 	      		  	}
 	          		comboTestCase.setSelectedItem(Constant.TEST_CASES_EDIT_POST[0]);
 	          		comboTestCase.setWide(true);
+				} else if (testCase.contains("get_list_suggested_friends")) {
+            		for (int i = 0; i < Constant.TEST_CASES_GET_LIST_SUGGESTED_FRIENDS.length; i++) {
+	          			comboTestCase.addItem(Constant.TEST_CASES_GET_LIST_SUGGESTED_FRIENDS[i]);
+	      		  	}
+	          		comboTestCase.setSelectedItem(Constant.TEST_CASES_GET_LIST_SUGGESTED_FRIENDS[0]);
+	          		comboTestCase.setWide(true);
+            	} else if (testCase.contains("get_push_settings")) {
+            		for (int i = 0; i < Constant.TEST_CASES_GET_PUSH_SETTINGS.length; i++) {
+	          			comboTestCase.addItem(Constant.TEST_CASES_GET_PUSH_SETTINGS[i]);
+	      		  	}
+	          		comboTestCase.setSelectedItem(Constant.TEST_CASES_GET_PUSH_SETTINGS[0]);
+	          		comboTestCase.setWide(true);
             	} 
             	else {
             		
@@ -312,7 +324,25 @@ public class main {
             				break;
             			}
             		}
-            	} 
+				} else if (testCase.contains("get_list_suggested_friends")) {
+            		String testNumber = String.valueOf(comboTestCase.getSelectedItem());
+            		for (int i = 0; i < Constant.TEST_CASES_GET_LIST_SUGGESTED_FRIENDS.length; i++) {
+            			if (testNumber == Constant.TEST_CASES_GET_LIST_SUGGESTED_FRIENDS[i]) {
+            				int testCaseNum = i + 1;
+            				GetListSuggestedFriends.run(sourceName, testCaseNum, textResult, textResponse);
+            				break;
+            			}
+            		}
+				} else if (testCase.contains("get_push_settings")) {
+            		String testNumber = String.valueOf(comboTestCase.getSelectedItem());
+            		for (int i = 0; i < Constant.TEST_CASES_GET_PUSH_SETTINGS.length; i++) {
+            			if (testNumber == Constant.TEST_CASES_GET_PUSH_SETTINGS[i]) {
+            				int testCaseNum = i + 1;
+            				GetPushSettings.run(sourceName, testCaseNum, textResult, textResponse);
+            				break;
+            			}
+            		}
+				}
             	else {
             		
             	}
