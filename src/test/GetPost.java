@@ -18,11 +18,11 @@ import config.Constant;
 import models.*;
 
 public class GetPost {
-	public static void run(int testCaseNum, JTextArea textResult, JTextArea textResponse) {
+	public static void run(String sourceName, int testCaseNum, JTextArea textResult, JTextArea textResponse) {
 		try {
-			URL url = new URL(Constant.API_URL + "post/get_post"
+			URL url = new URL(sourceName + "get_post"
 					+ "?token=" + Constant.TOKEN 
-					+ "&id=" + Constant.POST_ID);
+					+ "&id=" + Constant.POST_ID_SOURCE_4);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
 			connection.setDoOutput(true);

@@ -284,12 +284,13 @@ public class main {
 		btnRun.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
+				String sourceName = String.valueOf(comboSource.getSelectedItem());
 				if (testCase.contains("get_comment")) {
             		String testNumber = String.valueOf(comboTestCase.getSelectedItem());
             		for (int i = 0; i < Constant.TEST_CASES_GET_COMMENT.length; i++) {
             			if (testNumber == Constant.TEST_CASES_GET_COMMENT[i]) {
             				int testCaseNum = i + 1;
-            				GetComment.run(testCaseNum, textResult, textResponse);
+            				GetComment.run(sourceName, testCaseNum, textResult, textResponse);
             				break;
             			}
             		}
@@ -298,7 +299,7 @@ public class main {
             		for (int i = 0; i < Constant.TEST_CASES_GET_POST.length; i++) {
             			if (testNumber == Constant.TEST_CASES_GET_POST[i]) {
             				int testCaseNum = i + 1;
-            				GetPost.run(testCaseNum, textResult, textResponse);
+            				GetPost.run(sourceName, testCaseNum, textResult, textResponse);
             				break;
             			}
             		}
@@ -307,7 +308,7 @@ public class main {
             		for (int i = 0; i < Constant.TEST_CASES_EDIT_POST.length; i++) {
             			if (testNumber == Constant.TEST_CASES_EDIT_POST[i]) {
             				int testCaseNum = i + 1;
-            				EditPost.run(testCaseNum, textResult, textResponse);
+            				EditPost.run(sourceName, testCaseNum, textResult, textResponse);
             				break;
             			}
             		}

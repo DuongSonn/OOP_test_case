@@ -18,11 +18,11 @@ import config.Constant;
 import models.*;
 
 public class GetComment {
-	public static void run(int testCaseNum, JTextArea textResult, JTextArea textResponse) {
+	public static void run(String sourceName, int testCaseNum, JTextArea textResult, JTextArea textResponse) {
 		try {
-			URL url = new URL(Constant.API_URL + "comment/get_comment"
+			URL url = new URL(sourceName + "get_comment"
 					+ "?token=" + Constant.TOKEN 
-					+ "&id=" + Constant.POST_ID
+					+ "&id=" + Constant.POST_ID_SOURCE_4
 					+ "&index=0"
 					+ "&count=20");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();

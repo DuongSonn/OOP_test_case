@@ -18,11 +18,11 @@ import config.Constant;
 import models.*;
 
 public class EditPost {
-	public static void run(int testCaseNum, JTextArea textResult, JTextArea textResponse) {
+	public static void run(String sourceName, int testCaseNum, JTextArea textResult, JTextArea textResponse) {
 		try {
 			String encodedDescribed=java.net.URLEncoder.encode("Teach me how to love - TLinh3","UTF-8");
 			String encodedStatus=java.net.URLEncoder.encode("happy3","UTF-8");
-			URL url = new URL(Constant.SOURCES[3] + "edit_post"
+			URL url = new URL(sourceName + "edit_post"
 					+ "?token=" + Constant.TOKEN 
 					+ "&id=" + Constant.POST_ID_SOURCE_4
 					+ "&described=" + encodedDescribed 

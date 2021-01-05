@@ -1,7 +1,7 @@
 package config;
 
 public class Constant {
-	public static String TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjRhZGZjMjY1NTVmZSIsInVzZXJJZCI6IjEiLCJpc0Jsb2NrZWQiOm51bGwsImlhdCI6MTYwOTc5MjcyOX0.W0z-03KERW4OSovJyiqRY7GWAgW9t1a9u2t9JSTCqkE";
+	public static String TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImFmMGMxNWFlOWU0MSIsInVzZXJJZCI6IjEiLCJpc0Jsb2NrZWQiOm51bGwsImlhdCI6MTYwOTg1MzM0N30.jM0Z0Z6jCbv09uCyV3PuwbVppICEhvmuGCEPxbWzRNU";
 	public static String API_URL = "https://it4895-nhom5.herokuapp.com/it4788/";
 	public static String POST_ID = "5fcdf1880054254eac0e253e";
 	public static String POST_ID_SOURCE_4 = "10";
@@ -14,7 +14,7 @@ public class Constant {
 	public static String[] APIS_SOURCE_1 = {"", ""};
 	public static String[] APIS_SOURCE_2 = {"", ""};
 	public static String[] APIS_SOURCE_3 = {"", ""};
-	public static String[] APIS_SOURCE_4 = {"post/edit_post"};
+	public static String[] APIS_SOURCE_4 = {"comment/get_comment", "post/get_post", "post/edit_post"};
 	public static String[] APIS_SOURCE_5 = {"comment/get_comment", "post/get_post"};
 	public static String[] APIS_SOURCE_6 = {"", ""};
 //	Thứ tự API get_commoent, get_post, ...
