@@ -73,6 +73,14 @@ public class GetListSuggestedFriends {
 						}
 					}
 		        	textResult.setText("Test case 3 is finished! Satisfied!");
+		        } else if (testCaseNum == 4) {
+					assert(rp.data.list_users!= null);
+					if (rp.data.list_users.length > 0) {
+						for (int i = 0; i < rp.data.list_users.length; i++) {
+							assert(rp.data.list_users[i].user_id != "5ff51584d19c830017c6abe6");
+						}
+					}
+		        	textResult.setText("Test case 4 is finished! Satisfied!");
 		        }	    
 		    } catch (IOException e) {
 		    	textResult.setText("Test case failed!");

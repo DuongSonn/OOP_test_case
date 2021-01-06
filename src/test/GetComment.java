@@ -22,7 +22,7 @@ public class GetComment {
 		try {
 			URL url = new URL(sourceName + "get_comment"
 					+ "?token=" + Constant.TOKEN 
-					+ "&id=" + Constant.POST_ID_SOURCE_4
+					+ "&id=" + Constant.POST_ID_SOURCE_5
 					+ "&index=0"
 					+ "&count=20");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();

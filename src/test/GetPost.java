@@ -22,7 +22,7 @@ public class GetPost {
 		try {
 			URL url = new URL(sourceName + "get_post"
 					+ "?token=" + Constant.TOKEN 
-					+ "&id=" + Constant.POST_ID_SOURCE_4);
+					+ "&id=" + Constant.POST_ID_SOURCE_5);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
 			connection.setDoOutput(true);

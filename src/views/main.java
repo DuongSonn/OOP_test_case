@@ -141,7 +141,7 @@ public class main {
             			comboApi.addItem(Constant.APIS_SOURCE_4[i]);
           		  	}
           		  	break;
-            	  case "https://it4895-nhom5.herokuapp.com/":
+            	  case "https://it4895-nhom5-v2.herokuapp.com/it4788/":
             		for (int i = 0; i < Constant.APIS_SOURCE_5.length; i++) {
             			comboApi.addItem(Constant.APIS_SOURCE_5[i]);
           		  	}
